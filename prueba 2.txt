@@ -1,0 +1,2 @@
+prueba para el parcial 
+JOptionpane
