@@ -1,23 +1,29 @@
 package com.AATM.x00304019;
 
+import javax.print.Doc;
 import java.util.*;
 
-public abstract class  Empleado {
+public class  Empleado {
     protected String nombre, puesto;
     protected double salario;
-    protected ArrayList<Documento> doc = new ArrayList<Documento>();
+    protected ArrayList<Documento> documentos = new ArrayList<>();
 
-    public Empleado(String nombre, String puesto, double salario) {
+    public Empleado(){
+
+    }
+
+    public Empleado(String nombre, String puesto, double salario, ArrayList<Documento> documentos) {
         this.nombre = nombre;
         this.puesto = puesto;
         this.salario = salario;
+        this.documentos = documentos;
     }
 
-    public void addDocumento(){
-
+    public void addDocumento(Documento DUI){
+        documentos.add(DUI);
     }
 
-    public void removeDocumento(){
+    public void removeDocumento(String a){
 
     }
 
@@ -34,7 +40,7 @@ public abstract class  Empleado {
     }
 
     public List<Documento> getDocumentos() {
-        return doc;
+        return documentos;
     }
 
     public void setSalario(double salario) {
@@ -47,7 +53,7 @@ public abstract class  Empleado {
                 "nombre='" + nombre + '\'' +
                 ", puesto='" + puesto + '\'' +
                 ", salario=" + salario +
-                ", doc=" + doc +
+                ", documentos=" + documentos +
                 '}';
     }
 }
