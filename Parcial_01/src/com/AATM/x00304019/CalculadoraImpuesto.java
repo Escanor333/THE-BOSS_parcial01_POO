@@ -11,10 +11,10 @@ public final class CalculadoraImpuesto {
     public double CalcularPago(Empleado empleado){
         double pago = 0,salario=empleado.getSalario();
         JOptionPane.showMessageDialog(null, "Mostrar salario: " + salario);
-        if(empleado instanceof ServicioProfesional){
+        if(empleado.getTipo() == 1){
             totalRenta =salario*0.1;
             pago= salario- totalRenta;
-        }else if(empleado instanceof PlazaFija){
+        }else if(empleado.getTipo() == 0){
             totalISSS = salario* totalISSS;
             totalAFP = salario* totalAFP;
             double restante =  salario - totalISSS - totalAFP;

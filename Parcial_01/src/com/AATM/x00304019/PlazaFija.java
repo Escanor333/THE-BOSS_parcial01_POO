@@ -10,8 +10,8 @@ public class PlazaFija extends Empleado {
         this.extension = extension;
     }
 
-    public PlazaFija(String nombre, String puesto, double salario, ArrayList<Documento> documentos, int extension) {
-        super(nombre, puesto, salario, documentos);
+    public PlazaFija(String nombre, String puesto, double salario, ArrayList<Documento> documentos, int tipo, int extension) {
+        super(nombre, puesto, salario, documentos, tipo);
         this.extension = extension;
     }
 

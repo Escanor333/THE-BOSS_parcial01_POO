@@ -11,6 +11,7 @@ public class Main {
         Empleado persona = null;
         PlazaFija pf = new PlazaFija();
         ServicioProfesional sp = new ServicioProfesional();
+        CalculadoraImpuesto ci = new CalculadoraImpuesto();
         String empresa = JOptionPane.showInputDialog(null, "Digite el nombre de la empresa: ");
         emp = new Empresa(empresa);
 
@@ -34,13 +35,16 @@ public class Main {
                      double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Salario: "));
                      String nombreDOC = JOptionPane.showInputDialog(null, "Digite el nombre del documento: ");
                      String numeroDOC = JOptionPane.showInputDialog(null, "Digite el numero del documento: ");
-                    doc.add(new Documento(nombreDOC, numeroDOC));
-                    persona = new Empleado(nombre, puesto, salario, doc);
-                    JOptionPane.showMessageDialog(null, "La informacion del empleado: " + persona.getNombre() + ", " + persona.getPuesto() + ", " +
-                    persona.getSalario() + ", " + persona.getDocumentos());
+
                     String[] tipo = {"Plaza Fija", "Servicio Profesional"};
                     int seleccion = JOptionPane.showOptionDialog(null, "Es necesario que seleccione una opcion", null,  +
                             JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, tipo, tipo[0]);
+                        doc.add(new Documento(nombreDOC, numeroDOC));
+                        persona = new Empleado(nombre, puesto, salario, doc, seleccion);
+
+                    JOptionPane.showMessageDialog(null, "La informacion del empleado: " + persona.getNombre() + ", " + persona.getPuesto() + ", " +
+                            persona.getSalario() + ", " + persona.getDocumentos());
+
 
                     if (seleccion == 0){
                         pf.setExtension(Integer.parseInt(JOptionPane.showInputDialog(null, "Digite la extension: ")));
@@ -67,14 +71,26 @@ public class Main {
 
                 case 4:
 
-                    CalculadoraImpuesto ci = new CalculadoraImpuesto();
                     String calcular = JOptionPane.showInputDialog(null, "Digite el nombre del empleado: ");
-                    ci.CalcularPago(persona);
-                    JOptionPane.showMessageDialog(null, "Mostrar totales" + ci.MostrarTotales());
+                    for (int i = 0; i < emp.getEmpleados().size(); i++) {
+                        if (emp.getEmpleados().get(i).getNombre().equals(calcular)) {
+                            persona = new Empleado(emp.getEmpleados().get(i).getNombre(), emp.getEmpleados().get(i).getPuesto(), emp.getEmpleados().get(i).getSalario(), (ArrayList<Documento>) emp.getEmpleados().get(i).getDocumentos(), emp.getEmpleados().get(i).getTipo());
+                            JOptionPane.showMessageDialog(null, persona.toString());
+
+
+                            ci.CalcularPago(persona);
+                            JOptionPane.showMessageDialog(null, "Mostrar totales" + ci.MostrarTotales());
+                        }
+                    }
+
+
 
                     break;
 
                 case 5:
+
+                        JOptionPane.showMessageDialog(null, "Salario total" + ci.MostrarTotales());
+
                     break;
             }
 
