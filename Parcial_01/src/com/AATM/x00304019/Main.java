@@ -60,7 +60,7 @@ public class Main {
 
                 case 2:
 
-                    String buscar = JOptionPane.showInputDialog(null, "Buscar empleado por el nombre del documento: ");
+                    String buscar = JOptionPane.showInputDialog(null, "Buscar el nombre del empleado a despedir: ");
                     emp.quitEmpleados(buscar);
 
                     break;
@@ -83,8 +83,6 @@ public class Main {
                         }
                     }
 
-
-
                     break;
 
                 case 5:
@@ -93,8 +91,7 @@ public class Main {
 
                     break;
             }
-
-
+            
 
         }while (op != 5) ;
     }
